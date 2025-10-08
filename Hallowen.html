@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Enigma do medo</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-family: "Times New Roman", serif;
+        }
+
+        .caixa-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            justify-items: center;
+            margin-top: 50px;
+        }
+
+        .caixa {
+            background-color: #FF8C00;
+            border: 2px solid white;
+            color: white;
+            padding: 40px;
+            width: 400px;
+            height: 150px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: "Times New Roman", serif;
+            font-size: 3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .caixa:hover {
+            transform: scale(1.1);
+            background-color: #333;
+        }
+
+        /* Fundo escurecido (overlay) */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Caixa central (modal) */
+        .modal {
+            background-color: #222;
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            text-align: center;
+            border: 2px solid white;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.8);
+            font-family: "Times New Roman", serif;
+        }
+
+        .fechar {
+            margin-top: 20px;
+            background-color: #FF8C00;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .fechar:hover {
+            background-color: #ffb84d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo</h1>
+    <p>Aqui estão as pistas que você precisa para abrir o cadeado, se juntem e procurem</p>
+
+    <div class="caixa-container">
+        <div class="caixa" onclick="abrirModal('O Kilimanjaro, localizado no Aldeia das Águas Park Resort em Barra do Piraí, Rio de Janeiro, é o maior tobogã do Brasil, com 49,9 metros de altura. Ele é tão alto que supera a Estátua da Liberdade em altura. ')">Pista 1</div>
+        <div class="caixa" onclick="abrirModal('João 8:12: Eu sou a luz do mundo. Quem me segue, nunca andará em trevas, mas terá a luz da vida. ')">Pista 2</div>
+        <div class="caixa" onclick="abrirModal('A terceira está entre dv fruhv dcxo, yhuphokr, dpduhor, yhugh h flqcd')">Pista 3</div>
+        <div class="caixa" onclick="abrirModal('A ultima está em baixo dos seus narizes')">Pista 4</div>
+    </div>
+
+    <!-- Modal -->
+    <div class="overlay" id="overlay">
+        <div class="modal">
+            <p id="modal-texto"></p>
+            <button class="fechar" onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function abrirModal(texto) {
+            document.getElementById('modal-texto').textContent = texto;
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
